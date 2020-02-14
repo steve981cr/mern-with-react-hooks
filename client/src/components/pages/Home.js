@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const [articles, setArticles] = useState([]);
@@ -31,11 +32,16 @@ function Home() {
 
   return (
     <div>
+      <Link to="/articles/new" className="btn btn-primary float-right">
+        Create Article
+      </Link>
       <input type="text" value={searchTerm} onChange={handleChange} />
       <ul>
         {searchResults.map((item, key) => (
           <li key={key}>
-            {item.fname} - {item.lname} - {item.phone}
+            <Link to={`/articles/${item._id}`}>
+              {item.fname} - {item.lname} - {item.phone}
+            </Link>
           </li>
         ))}
       </ul>

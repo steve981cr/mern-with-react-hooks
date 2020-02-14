@@ -25,7 +25,7 @@ function ArticleInfo(props) {
   async function handleDelete() {
     try {
       await axios.delete(`/api/articles/${props.match.params._id}`);
-      props.history.push('/articles');
+      props.history.push('/');
     } catch (error) {
       console.error(error);
     }
@@ -45,7 +45,7 @@ function ArticleInfo(props) {
         <button onClick={handleDelete} className="btn btn-danger">
           Delete
         </button>
-        <Link to="/articles" className="btn btn-secondary">
+        <Link to="/" className="btn btn-secondary">
           Close
         </Link>
       </div>
