@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
 
-const articleSchema = new mongoose.Schema({ 
-  title: {
+const articleSchema = new mongoose.Schema({
+  fname: {
     type: String,
-    required: [true, "Title is required"]
+    required: [true, 'Title is required']
   },
-  content: {
+  lname: {
     type: String,
+    required: [true, "Content can't be blank"]
+  },
+  phone: {
+    type: Number,
     required: [true, "Content can't be blank"]
   }
 });
 
-module.exports = mongoose.model('Article', articleSchema); 
+module.exports = mongoose.model('Article', articleSchema);
