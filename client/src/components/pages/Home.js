@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 function Home() {
   const [articles, setArticles] = useState([]);
@@ -19,26 +18,24 @@ function Home() {
     getArticles();
   }, []);
 
-  console.log(articles);
-
   const handleChange = e => {
     setSearchTerm(e.target.value);
   };
 
   useEffect(() => {
     const results = articles.filter(article =>
-      article.title.includes(searchTerm)
+      article.fname.includes(searchTerm)
     );
     setSearchResults(results);
-  }, [searchTerm]);
+  }, [searchTerm, articles]);
 
   return (
     <div>
       <input type="text" value={searchTerm} onChange={handleChange} />
       <ul>
-        {searchResults.map(item => (
-          <li>
-            {item.title} - {item.content}
+        {searchResults.map((item, key) => (
+          <li key={key}>
+            {item.fname} - {item.lname} - {item.phone}
           </li>
         ))}
       </ul>
