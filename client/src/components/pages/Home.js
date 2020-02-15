@@ -24,8 +24,11 @@ function Home() {
   };
 
   useEffect(() => {
-    const results = articles.filter(article =>
-      article.fname.includes(searchTerm)
+    const results = articles.filter(
+      article =>
+        article.fname.toLowerCase().includes(searchTerm) ||
+        article.lname.toLowerCase().includes(searchTerm) ||
+        article.phone.toLowerCase().includes(searchTerm)
     );
     setSearchResults(results);
   }, [searchTerm, articles]);
@@ -40,7 +43,7 @@ function Home() {
         {searchResults.map((item, key) => (
           <li key={key}>
             <Link to={`/articles/${item._id}`}>
-              {item.fname} - {item.lname} - {item.phone}
+              {item.fname} {item.lname} - {item.phone}
             </Link>
           </li>
         ))}

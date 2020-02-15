@@ -10,7 +10,7 @@ const articleSchema = new mongoose.Schema({
     required: [true, "Content can't be blank"]
   },
   phone: {
-    type: Number,
+    type: String,
     required: [true, "Content can't be blank"]
   }
 });
