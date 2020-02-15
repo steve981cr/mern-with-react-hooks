@@ -33,9 +33,10 @@ function ArticleInfo(props) {
 
   return (
     <div>
-      <h2>{article.fname}</h2>
-      <p>{article.lname}</p>
-      <p>{article.phone}</p>
+      <h2>
+        {article.fname} {article.lname}
+      </h2>
+      <p>Number: {article.phone}</p>
       <small>_id: {article._id}</small>
       <br />
       <div className="btn-group">

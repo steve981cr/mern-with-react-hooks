@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { post } from 'axios';
+import { NameField } from '../fieldHelpers';
 
 function ArticleAdd(props) {
-  const initialState = { fname: '', lname: '', phone: '' };
+  const initialState = { fname: '', lname: '', phone: '+' };
   const [article, setArticle] = useState(initialState);
 
   function handleChange(event) {
@@ -12,6 +13,12 @@ function ArticleAdd(props) {
   function handleSubmit(event) {
     event.preventDefault();
     if (!article.fname || !article.lname || !article.phone) return;
+
+    if (!article.phone.match(/([+][0-9]{2,3})\s?[0-9]{1,2}\s?([0-9]{6,10})/g)) {
+      console.log('wrong number');
+      return;
+    }
+
     async function postArticle() {
       try {
         const response = await post('/api/articles', article);
@@ -32,26 +39,8 @@ function ArticleAdd(props) {
       <h1>Create Article</h1>
       <hr />
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>fname</label>
-          <input
-            name="fname"
-            type="text"
-            value={article.fname}
-            onChange={handleChange}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label>lname</label>
-          <input
-            name="lname"
-            type="text"
-            value={article.lname}
-            onChange={handleChange}
-            className="form-control"
-          />
-        </div>
+        {NameField('fname', article.fname, handleChange)}
+        {NameField('lname', article.lname, handleChange)}
         <div className="form-group">
           <label>phone</label>
           <input
