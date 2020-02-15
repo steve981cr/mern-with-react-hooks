@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { post } from 'axios';
-import { NameField } from '../fieldHelpers';
+import { NameField, PhoneField } from '../fieldHelpers';
 
 function ArticleAdd(props) {
   const initialState = { fname: '', lname: '', phone: '+' };
   const [article, setArticle] = useState(initialState);
+  const [err, setErr] = useState();
 
   function handleChange(event) {
     setArticle({ ...article, [event.target.name]: event.target.value });
@@ -13,9 +14,10 @@ function ArticleAdd(props) {
   function handleSubmit(event) {
     event.preventDefault();
     if (!article.fname || !article.lname || !article.phone) return;
-
-    if (!article.phone.match(/([+][0-9]{2,3})\s?[0-9]{1,2}\s?([0-9]{6,10})/g)) {
-      console.log('wrong number');
+    if (!article.phone.match(/([+][0-9]{9,15})/g)) {
+      setErr(
+        'Wrong format for phone. Should start with a "+" and be minimum total of 9 digits without spaces'
+      );
       return;
     }
 
@@ -31,7 +33,7 @@ function ArticleAdd(props) {
   }
 
   function handleCancel() {
-    props.history.push('/articles');
+    props.history.push('/');
   }
 
   return (
@@ -41,16 +43,8 @@ function ArticleAdd(props) {
       <form onSubmit={handleSubmit}>
         {NameField('fname', article.fname, handleChange)}
         {NameField('lname', article.lname, handleChange)}
-        <div className="form-group">
-          <label>phone</label>
-          <input
-            name="phone"
-            type="text"
-            value={article.phone}
-            onChange={handleChange}
-            className="form-control"
-          />
-        </div>
+        {PhoneField('phone', article.phone, handleChange)}
+        {err && <p style={{ color: 'red' }}>{err}</p>}
         <div className="btn-group">
           <input type="submit" value="Submit" className="btn btn-primary" />
           <button

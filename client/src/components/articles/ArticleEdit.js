@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { get, patch } from 'axios';
-import { NameField } from '../fieldHelpers';
+import { NameField, PhoneField } from '../fieldHelpers';
 
 function ArticleEdit(props) {
   const initialState = { fname: '', lname: '', phone: '' };
@@ -48,16 +48,7 @@ function ArticleEdit(props) {
       <form onSubmit={handleSubmit}>
         {NameField('fname', article.fname, handleChange)}
         {NameField('lname', article.lname, handleChange)}
-        <div className="form-group">
-          <label>phone</label>
-          <input
-            name="phone"
-            type="text"
-            value={article.phone}
-            onChange={handleChange}
-            className="form-control"
-          />
-        </div>
+        {PhoneField('phone', article.phone, handleChange)}
         <div className="btn-group">
           <button type="submit" className="btn btn-primary">
             Update

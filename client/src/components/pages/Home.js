@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { NumberFormatter } from '../fieldHelpers';
 
 function Home() {
   const [articles, setArticles] = useState([]);
@@ -24,11 +25,12 @@ function Home() {
   };
 
   useEffect(() => {
+    const searchStr = new RegExp(searchTerm, 'i');
     const results = articles.filter(
       article =>
-        article.fname.toLowerCase().includes(searchTerm) ||
-        article.lname.toLowerCase().includes(searchTerm) ||
-        article.phone.toLowerCase().includes(searchTerm)
+        article.fname.match(searchStr) ||
+        article.lname.match(searchStr) ||
+        article.phone.match(searchStr)
     );
     setSearchResults(results);
   }, [searchTerm, articles]);
@@ -43,7 +45,7 @@ function Home() {
         {searchResults.map((item, key) => (
           <li key={key}>
             <Link to={`/articles/${item._id}`}>
-              {item.fname} {item.lname} - {item.phone}
+              {item.fname} {item.lname} - {NumberFormatter(item.phone)}
             </Link>
           </li>
         ))}
