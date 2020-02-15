@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { NumberFormatter } from '../fieldHelpers';
 
 function ArticleInfo(props) {
   const [article, setArticle] = useState({});
@@ -36,8 +37,7 @@ function ArticleInfo(props) {
       <h2>
         {article.fname} {article.lname}
       </h2>
-      <p>Number: {article.phone}</p>
-      <small>_id: {article._id}</small>
+      <p>Number: {article.phone && NumberFormatter(article.phone)}</p>
       <br />
       <div className="btn-group">
         <Link to={`/articles/${article._id}/edit`} className="btn btn-primary">
