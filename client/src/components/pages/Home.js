@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { NumberFormatter } from '../fieldHelpers';
+import { numberFormatter } from '../fieldHelpers';
 
 function Home() {
   const [articles, setArticles] = useState([]);
@@ -38,15 +38,16 @@ function Home() {
   return (
     <div>
       <Link to="/articles/new" className="btn btn-primary float-right">
-        Create Article
+        Add new entry
       </Link>
       <input type="text" value={searchTerm} onChange={handleChange} />
       <ul>
         {searchResults.map((item, key) => (
           <li key={key}>
             <Link to={`/articles/${item._id}`}>
-              {item.fname} {item.lname} - {NumberFormatter(item.phone)}
-            </Link>
+              {item.fname} {item.lname}
+            </Link>{' '}
+            | {numberFormatter(item.phone)}
           </li>
         ))}
       </ul>

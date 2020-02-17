@@ -1,14 +1,21 @@
-# README
+## Simple phonebook app
 
-This application goes along with the Build a MERN App and Deploy to Heroku tutorial series. It uses React Hooks released with React version 16.8 (February 2019).
+Keeps record of contacts in form of : Name/Surname/Phone Nr.
 
-There are three parts:
+### Using
 
-Build an API with Node.js, Express and MongoDB: https://www.techandstartup.com/tutorials/build-api-with-node-express-and-mongodb
+- Use search box to search through the entries
+- Click on an entry to view, edit or delete the contact
+- `Add new entry` for adding new contacts
 
-Integrate React with Hooks into your MERN App: https://www.techandstartup.com/tutorials/mern-app-with-react-hooks
+### Installing
 
-Deploy a MERN App to Heroku: https://www.techandstartup.com/tutorials/deploy-mern-app-to-heroku
+- Clone to local
+- Install dependencies by running `npm install` on following directories: `root` for backend, `client` for frontend.
 
-To run the app in your development environment:
-npm run dev
+### Running
+
+- In the root dir, run `node server` to run the server (or nodemon, if present). It should confirm the port with `Server listening on port 3001.` and the connection to the MongoDB with `Connected to the Database.`
+- In `client` dir, run `npm start` to start the front-end react application. It will run on `localhost:3000` by default
+
+PS: MongoDB queries are made with a test user I have created and gave permission to, can be found as `MONGODB_URI` in server.js
