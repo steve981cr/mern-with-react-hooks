@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { post } from 'axios';
-import { NameField, PhoneField } from '../fieldHelpers';
+import { firstNameField, lastNameField, phoneField } from '../fieldHelpers';
 
 function ArticleAdd(props) {
   const initialState = { fname: '', lname: '', phone: '+' };
@@ -9,6 +9,15 @@ function ArticleAdd(props) {
 
   function handleChange(event) {
     setArticle({ ...article, [event.target.name]: event.target.value });
+  }
+
+  async function postArticle() {
+    try {
+      const response = await post('/api/articles', article);
+      props.history.push(`/articles/${response.data._id}`);
+    } catch (error) {
+      console.log('error', error);
+    }
   }
 
   function handleSubmit(event) {
@@ -20,15 +29,6 @@ function ArticleAdd(props) {
       );
       return;
     }
-
-    async function postArticle() {
-      try {
-        const response = await post('/api/articles', article);
-        props.history.push(`/articles/${response.data._id}`);
-      } catch (error) {
-        console.log('error', error);
-      }
-    }
     postArticle();
   }
 
@@ -38,15 +38,15 @@ function ArticleAdd(props) {
 
   return (
     <div>
-      <h1>Create Article</h1>
+      <h1>Create Contact</h1>
       <hr />
       <form onSubmit={handleSubmit}>
-        {NameField('fname', article.fname, handleChange)}
-        {NameField('lname', article.lname, handleChange)}
-        {PhoneField('phone', article.phone, handleChange)}
+        {firstNameField('fname', article.fname, handleChange)}
+        {lastNameField('lname', article.lname, handleChange)}
+        {phoneField('phone', article.phone, handleChange)}
         {err && <p style={{ color: 'red' }}>{err}</p>}
         <div className="btn-group">
-          <input type="submit" value="Submit" className="btn btn-primary" />
+          <button className="btn btn-primary">Submit</button>
           <button
             type="button"
             onClick={handleCancel}

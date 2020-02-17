@@ -1,17 +1,17 @@
 import React from 'react';
 
-function Capitalize(string) {
+function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function NameField(name, str, func) {
+function firstNameField(name, str, func) {
   return (
     <div className="form-group">
-      <label>fname</label>
+      <label>First name</label>
       <input
         name={name}
         type="text"
-        value={Capitalize(str)}
+        value={capitalize(str)}
         onChange={func}
         className="form-control"
         required
@@ -20,10 +20,26 @@ function NameField(name, str, func) {
   );
 }
 
-function PhoneField(name, nr, func) {
+function lastNameField(name, str, func) {
   return (
     <div className="form-group">
-      <label>phone</label>
+      <label>Last name</label>
+      <input
+        name={name}
+        type="text"
+        value={capitalize(str)}
+        onChange={func}
+        className="form-control"
+        required
+      />
+    </div>
+  );
+}
+
+function phoneField(name, nr, func) {
+  return (
+    <div className="form-group">
+      <label>Phone</label>
       <input
         name={name}
         type="text"
@@ -35,11 +51,11 @@ function PhoneField(name, nr, func) {
   );
 }
 
-function NumberFormatter(num) {
+function numberFormatter(num) {
   const prefix = num.substring(1, 3);
   const national = num.substring(3, 5);
   const personal = num.substring(5, num.length);
   return '+' + prefix + ' ' + national + ' ' + personal;
 }
 
-export { NameField, PhoneField, NumberFormatter };
+export { firstNameField, lastNameField, phoneField, numberFormatter };
