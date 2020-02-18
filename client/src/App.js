@@ -5,7 +5,6 @@ import {
   NavLink,
   Switch
 } from 'react-router-dom';
-import './App.css';
 import Home from './components/pages/Home';
 import ArticleInfo from './components/articles/ArticleInfo';
 import ArticleAdd from './components/articles/ArticleAdd';
