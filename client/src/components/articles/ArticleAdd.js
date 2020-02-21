@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { post } from 'axios';
-import { nameField, phoneField } from '../fieldHelpers';
+import { NameField, PhoneField } from '../fieldHelpers';
 
 function ArticleAdd(props) {
   const initialState = { fname: '', lname: '', phone: '+' };
@@ -33,9 +33,19 @@ function ArticleAdd(props) {
       <h1>Create Contact</h1>
       <hr />
       <form onSubmit={handleSubmit}>
-        {nameField('First Name', 'fname', article.fname, handleChange)}
-        {nameField('Last Name', 'lname', article.lname, handleChange)}
-        {phoneField('phone', article.phone, handleChange)}
+        <NameField
+          label="First Name"
+          name="fname"
+          str={article.fname}
+          func={handleChange}
+        />
+        <NameField
+          label="Last Name"
+          name="lname"
+          str={article.lname}
+          func={handleChange}
+        />
+        <PhoneField name="phone" nr={article.phone} func={handleChange} />
         <div className="btn-group">
           <button className="btn btn-primary">Submit</button>
           <button
