@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { post } from 'axios';
-import { firstNameField, lastNameField, phoneField } from '../fieldHelpers';
+import { nameField, phoneField } from '../fieldHelpers';
 
 function ArticleAdd(props) {
   const initialState = { fname: '', lname: '', phone: '+' };
   const [article, setArticle] = useState(initialState);
-  const [err, setErr] = useState();
 
   function handleChange(event) {
     setArticle({ ...article, [event.target.name]: event.target.value });
@@ -22,13 +21,6 @@ function ArticleAdd(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (!article.fname || !article.lname || !article.phone) return;
-    if (!article.phone.match(/([+][0-9]{9,15})/g)) {
-      setErr(
-        'Wrong format for phone. Should start with a "+" and be minimum total of 9 digits without spaces'
-      );
-      return;
-    }
     postArticle();
   }
 
@@ -41,10 +33,9 @@ function ArticleAdd(props) {
       <h1>Create Contact</h1>
       <hr />
       <form onSubmit={handleSubmit}>
-        {firstNameField('fname', article.fname, handleChange)}
-        {lastNameField('lname', article.lname, handleChange)}
+        {nameField('First Name', 'fname', article.fname, handleChange)}
+        {nameField('Last Name', 'lname', article.lname, handleChange)}
         {phoneField('phone', article.phone, handleChange)}
-        {err && <p style={{ color: 'red' }}>{err}</p>}
         <div className="btn-group">
           <button className="btn btn-primary">Submit</button>
           <button
