@@ -40,6 +40,8 @@ function Home() {
       <Link to="/articles/new" className="btn btn-primary float-right">
         Add new entry
       </Link>
+      <i>Start typing to filter results</i>
+      <br />
       <input type="text" value={searchTerm} onChange={handleChange} />
       <ul>
         {searchResults.map((item, key) => (

@@ -4,26 +4,10 @@ function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function firstNameField(name, str, func) {
+function nameField(label, name, str, func) {
   return (
     <div className="form-group">
-      <label>First name</label>
-      <input
-        name={name}
-        type="text"
-        value={capitalize(str)}
-        onChange={func}
-        className="form-control"
-        required
-      />
-    </div>
-  );
-}
-
-function lastNameField(name, str, func) {
-  return (
-    <div className="form-group">
-      <label>Last name</label>
+      <label>{label}</label>
       <input
         name={name}
         type="text"
@@ -41,6 +25,8 @@ function phoneField(name, nr, func) {
     <div className="form-group">
       <label>Phone</label>
       <input
+        pattern="[+][0-9]{9,15}"
+        title="Phone number should start with a '+', consist of numbers only and be 9 to 15 digits, not contain spaces"
         name={name}
         type="text"
         value={nr}
@@ -58,4 +44,4 @@ function numberFormatter(num) {
   return '+' + prefix + ' ' + national + ' ' + personal;
 }
 
-export { firstNameField, lastNameField, phoneField, numberFormatter };
+export { nameField, phoneField, numberFormatter };
