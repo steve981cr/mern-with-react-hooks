@@ -11,7 +11,6 @@ describe('Adds', () => {
     const handleCancel = jest.fn();
     const handleChange = jest.fn();
     const article = { fname: 'name', lname: 'one', phone: '+32 01234567' };
-
     const { getByTestId } = render(
       <ArticleAddForm
         article={article}
@@ -20,19 +19,17 @@ describe('Adds', () => {
         handleCancel={handleCancel}
       />
     );
-
-    fireEvent.click(getByTestId('submitButton'));
+    getByTestId('form').dispatchEvent(new Event('submit'));
     expect(handleSubmit).toHaveBeenCalledTimes(1);
     fireEvent.click(getByTestId('cancelButton'));
     expect(handleCancel).toHaveBeenCalledTimes(1);
   });
+
   it('edits first name', () => {
     const func = jest.fn();
-
     const { getByLabelText } = render(
       <NameField label="First Name" name="fname" str="sdgf" func={func} />
     );
-
     fireEvent.change(getByLabelText('First Name'), {
       target: {
         value: 'sdvzd'
@@ -40,13 +37,12 @@ describe('Adds', () => {
     });
     expect(func).toHaveBeenCalledTimes(1);
   });
+
   it('edits last name', () => {
     const func = jest.fn();
-
     const { getByLabelText } = render(
       <NameField label="Last Name" name="lname" str="sdgf" func={func} />
     );
-
     fireEvent.change(getByLabelText('Last Name'), {
       target: {
         value: 'sdvzd'
