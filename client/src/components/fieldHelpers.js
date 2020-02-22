@@ -26,12 +26,12 @@ function PhoneField({ name, nr, func }) {
     <div className="form-group">
       <label>Phone</label>
       <input
+        pattern="[+][0-9]{9,15}"
         name={name}
         type="text"
         value={nr}
         onChange={func}
         className="form-control"
-        pattern="[+][0-9]{9,15}"
         title="Phone number should start with a '+', consist of numbers only and be 9 to 15 digits, not contain spaces"
       />
     </div>
