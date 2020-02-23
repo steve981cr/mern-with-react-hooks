@@ -1,7 +1,7 @@
 import React from 'react';
 import ArticleAddForm from './ArticleAddForm';
 import { render, fireEvent, cleanup } from '@testing-library/react';
-import { NameField, PhoneField } from '../fieldHelpers';
+import { NameField } from '../fieldHelpers';
 
 afterEach(cleanup);
 
