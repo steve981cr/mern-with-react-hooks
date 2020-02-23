@@ -20,6 +20,10 @@ PS: MongoDB queries are made with a test user I have created and gave permission
 - Click on an entry to view, edit or delete the contact
 - `Add new entry` for adding new contacts
 
+## Testing
+
+Basic testing for frontend is included. Can be launched with `npm test` command in `client` directory.
+
 ### Resources
 
 I have used https://github.com/steve981cr/mern-with-react-hooks as a boilerplate. It provided a good, clean base code to begin with.
