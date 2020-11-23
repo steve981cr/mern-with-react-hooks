@@ -11,6 +11,8 @@ const MONGODB_URI =
 // app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('client/build'));
+
 app.use('/api', router);
 
 mongoose.connect(MONGODB_URI, {
