@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const cors = require('cors');
+const cors = require('cors');
 const router = require('./routes/index');
 
 const app = express();
@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001;
 const MONGODB_URI =
   'mongodb+srv://theuser:thepassword@cluster0-jepnr.gcp.mongodb.net/test?retryWrites=true';
 
-// app.use(cors())
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('client/build'));
