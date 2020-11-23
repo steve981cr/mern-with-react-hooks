@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const router = require('./routes/index');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const MONGODB_URI =
-  'mongodb+srv://theuser:thepassword@cluster0-jepnr.gcp.mongodb.net/test?retryWrites=true&w=majority';
+  'mongodb+srv://theuser:thepassword@cluster0-jepnr.gcp.mongodb.net/test?retryWrites=true';
 
 // app.use(cors())
 app.use(express.urlencoded({ extended: true }));
@@ -15,15 +15,15 @@ app.use('/api', router);
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
 });
-mongoose.connection.once('open', function() {
+mongoose.connection.once('open', function () {
   console.log('Connected to the Database.');
 });
-mongoose.connection.on('error', function(error) {
+mongoose.connection.on('error', function (error) {
   console.log('Mongoose Connection Error : ' + error);
 });
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`Server listening on port ${PORT}.`);
 });
