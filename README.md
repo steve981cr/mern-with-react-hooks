@@ -2,6 +2,12 @@
 
 Keeps record of contacts in form of : Name/Surname/Phone Nr.
 
+[Deployed example](https://aqueous-brook-88113.herokuapp.com/)
+
+_note: server takes a while to wake up_
+
+# Developing:
+
 ## Installing
 
 - Clone to local
