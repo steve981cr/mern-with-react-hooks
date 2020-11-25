@@ -38,9 +38,6 @@ function Home() {
 
   return (
     <div className="home">
-      <Link to="/articles/new" className="btn btn-primary float-right">
-        Add new entry
-      </Link>
       <input
         type="text"
         value={searchTerm}
@@ -48,13 +45,13 @@ function Home() {
         placeholder={'Find by name/surname or number'}
         className={'input-box'}
       />
-      <ul>
+      <ul class="list-group list-group-flush">
         {searchResults.map((item, key) => (
-          <li key={key}>
+          <li class="list-group-item" key={key}>
             <Link to={`/articles/${item._id}`}>
               {item.fname} {item.lname}
-            </Link>{' '}
-            | {numberFormatter(item.phone)}
+            </Link>
+            {numberFormatter(item.phone)}
           </li>
         ))}
       </ul>

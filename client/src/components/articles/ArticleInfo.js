@@ -7,7 +7,7 @@ function ArticleInfo(props) {
   const [article, setArticle] = useState({});
 
   useEffect(
-    function() {
+    function () {
       async function getArticle() {
         try {
           const response = await axios.get(
@@ -50,7 +50,6 @@ function ArticleInfo(props) {
           Close
         </Link>
       </div>
-      <hr />
     </div>
   );
 }

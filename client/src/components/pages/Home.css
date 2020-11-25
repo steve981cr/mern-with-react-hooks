@@ -4,22 +4,30 @@
 }
 
 #root > div > div {
-  padding: 50px 20px;
-  /* margin: 20px; */
+  box-shadow: 0px 10px 25px -10px rgba(143, 142, 142, 0.25);
+  padding: 4em;
   background-color: aliceblue;
-  border: 1px solid rgb(143, 142, 142);
-  border-radius: 0 0 25px 25px;
+  border-radius: 0 0 30px 30px;
 }
 
 #root > div > nav {
   margin-bottom: 0px !important;
-  padding: 25px 0;
+  padding: 2em 1em;
 }
 
 #root > div > nav > div > a {
   font-size: 2em;
+  padding: 0 15px 5px 17.5px;
 }
 
 .input-box {
-  width: 300px;
+  width: 100%;
+  margin-bottom: 3em;
+}
+
+#root > div > div > div > ul > li {
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75em 0;
 }
