@@ -1,0 +1,25 @@
+.App {
+  margin: 0 auto;
+  max-width: 750px;
+}
+
+#root > div > div {
+  padding: 50px 20px;
+  /* margin: 20px; */
+  background-color: aliceblue;
+  border: 1px solid rgb(143, 142, 142);
+  border-radius: 0 0 25px 25px;
+}
+
+#root > div > nav {
+  margin-bottom: 0px !important;
+  padding: 25px 0;
+}
+
+#root > div > nav > div > a {
+  font-size: 2em;
+}
+
+.input-box {
+  width: 300px;
+}
